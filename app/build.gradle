@@ -1,0 +1,77 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "top.littlefogcat.clickerx"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "0.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    flavorDimensions "source"
+    productFlavors {
+        mock {
+            dimension "source"
+            applicationIdSuffix ".mock"
+            versionNameSuffix "-mock"
+        }
+        prod {
+            dimension "source"
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ':base')
+    implementation project(path: ':accessibility')
+    implementation project(path: ':recorder')
+    implementation project(path: ':compiler_lua')
+
+    // Android官方库
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$ktx_core_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version" // RecyclerView
+    implementation "com.android.support:design:$design_version" // Design库
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version" // 协程
+    implementation "androidx.room:room-runtime:$room_version" // room runtime
+    implementation "androidx.room:room-ktx:$room_version" // room's kotlin support
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // 第三方库
+    implementation "com.google.code.gson:gson:$gson_version" // gson
+
+    // 测试
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "androidx.room:room-testing:$room_version" // test helper for room
+    androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso_version"
+
+}

@@ -1,0 +1,8 @@
+include ':compiler_lua'
+include ':compiler'
+include ':accessibility'
+include ':sample'
+include ':recorder'
+include ':base'
+include ':app'
+rootProject.name = "ClickerX"

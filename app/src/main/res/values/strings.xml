@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ClickerX</string>
+    <string name="add_config">添加配置文件</string>
+    <string name="config_files">配置文件</string>
+    <string name="settings">设置</string>
+    <string name="no_config_file">暂无配置文件</string>
+
+    <string name="confirm">确定</string>
+
+    <string name="enable_accessibility_dialog_title">需要打开辅助功能</string>
+    <string name="enable_accessibility_dialog_content">点击确定，在设置中找到"ClickerX"，打开辅助功能</string>
+    <string name="home">home</string>
+    <string name="message">message</string>
+    <string name="discover">discover</string>
+    <string name="me">me</string>
+    <string name="search">搜索</string>
+</resources>
