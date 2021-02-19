@@ -36,7 +36,7 @@ class ConfigsActivity : AppCompatActivity() {
      * 初始化配置列表Fragment
      */
     private fun initFragments() {
-        replaceFragmentIfAbsent(R.id.contentFrame, ConfigsFragment())
+        replaceFragmentIfAbsent(R.id.contentFrame, ConfigsFragment.newInstance())
     }
 
     private fun initNavigationView() {

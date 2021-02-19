@@ -8,7 +8,7 @@ package top.littlefogcat.clickerx.model
  * 创建日期：2020/8/4-16:41
  * Email：littlefogcat@foxmail.com
  */
-class ConfigsDataSourceImpl : ConfigsDataSource {
+class LocalConfigsDataSourceImpl : LocalConfigsDataSource {
 
     /**
      * 从数据库中加载配置文件列表。如果为空，则返回一个空的[ArrayList]。

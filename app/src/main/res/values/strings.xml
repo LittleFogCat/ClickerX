@@ -13,5 +13,6 @@
     <string name="message">message</string>
     <string name="discover">discover</string>
     <string name="me">me</string>
-    <string name="search">搜索</string>
+    <string name="search">search</string>
+    <string name="star">star</string>
 </resources>

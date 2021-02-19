@@ -7,8 +7,7 @@ import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import top.littlefogcat.clickerx.accessibility.ClickerXAccessibilityService
-import top.littlefogcat.clickerx.configs.ConfigsActivity
-import top.littlefogcat.clickerx.lua.LuaManager
+import top.littlefogcat.clickerx.main.MainActivity
 import top.littlefogcat.clickerx.utils.isAccessibilitySettingsOn
 import top.littlefogcat.clickerx.utils.launchActivity
 import top.littlefogcat.clickerx.utils.makeDialog
@@ -23,10 +22,13 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        LuaManager.init()
+//        LuaManager.init()
+        checkAccessibilityPermission()
+    }
 
+    private fun checkAccessibilityPermission() {
         // 检查辅助功能是否开启
-        if (!isAccessibilitySettingsOn(ClickerXAccessibilityService::class.java)) {
+        if (!(BuildConfig.DEBUG || isAccessibilitySettingsOn(ClickerXAccessibilityService::class.java))) {
             mDialog = makeDialog(
                 getString(R.string.enable_accessibility_dialog_title),
                 getString(R.string.enable_accessibility_dialog_content),
@@ -36,7 +38,8 @@ class SplashActivity : AppCompatActivity() {
             )
             mDialog.show()
         } else {
-            launchActivity(ConfigsActivity::class.java)
+            launchActivity(MainActivity::class.java)
+            finish()
         }
     }
 

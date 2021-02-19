@@ -13,4 +13,6 @@
     <string name="message">消息</string>
     <string name="discover">发现</string>
     <string name="me">我的</string>
+    <string name="search">搜索</string>
+    <string name="star">收藏</string>
 </resources>

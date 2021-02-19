@@ -37,7 +37,7 @@ fun AccessibilityService.startTraverseTask(TAG: String) {
             log.delete(log.length - 2, log.length)
             log.append("]")
         }
-        Log.d(TAG, "traverse: $log")
+        Log.v(TAG, "traverse: $log")
         for (i in 0 until c) {
             val child = root.getChild(i)
             traverse(child)

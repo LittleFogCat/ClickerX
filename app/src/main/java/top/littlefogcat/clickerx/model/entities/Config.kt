@@ -1,4 +1,4 @@
-package top.littlefogcat.clickerx.model
+package top.littlefogcat.clickerx.model.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

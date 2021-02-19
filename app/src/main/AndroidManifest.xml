@@ -33,7 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".main.MainActivity" />
         <activity android:name=".addconfig.AddConfigActivity" />
         <activity android:name=".configs.ConfigsActivity" />
     </application>

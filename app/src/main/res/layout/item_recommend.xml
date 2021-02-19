@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="top.littlefogcat.clickerx.model.entities.RecommendItem" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text='@{item.title}'
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="并夕夕签到并夕夕签到并夕夕?" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@{item.author.username}"
+            android:textStyle="bold"
+            app:avatar="@{item.author.avatar}"
+            tools:drawableStart="@drawable/ic_tab_me_dark"
+            tools:text="牛毛" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:lines="2"
+            android:text="@{item.summary}"
+            tools:text="并夕夕签到并夕夕签到并夕夕签到并夕夕签到并夕夕签到并夕夕签到并夕夕签到" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text='@{item.votes+"点赞 · "+item.comments+"评论"}'
+            tools:text="8319点赞 · 893评论" />
+    </LinearLayout>
+</layout>
