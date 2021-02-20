@@ -78,14 +78,18 @@ class HomeFragment private constructor() : BaseFragment<HomeFragBinding>() {
                         val lp = header.layoutParams as ViewGroup.MarginLayoutParams
                         val height = header.height
                         val minMargin = 0 - height
-                        if (dy < 0 && lp.topMargin + height > 0) {
+                        if (dy < 0 && lp.topMargin + height > 0) { // 往上滑
+                            Log.d(TAG, "handle: up")
                             val topMargin = lp.topMargin + dy
                             lp.topMargin = if (topMargin < minMargin) minMargin else topMargin
                             header.layoutParams = lp
-                        } else if (dy > 0 && lp.topMargin < 0) {
+                            return true
+                        } else if (dy > 0 && lp.topMargin < 0) { // 往下滑
+                            Log.d(TAG, "handle: down")
                             val topMargin = lp.topMargin + dy
                             lp.topMargin = if (topMargin > 0) 0 else topMargin
                             header.layoutParams = lp
+                            return true
                         }
                     }
                     lastX = x
@@ -96,10 +100,14 @@ class HomeFragment private constructor() : BaseFragment<HomeFragBinding>() {
                         if (header.top + header.bottom > 0) {
                             // 大部分显示，则滑出
                             val anim = TranslateAnimation(header.x, header.x, header.y, 0f)
+                            anim.duration = 300
+                            anim.fillAfter = true
                             header.startAnimation(anim)
                         } else {
                             // 大部分不显示
                             val anim = TranslateAnimation(header.x, header.x, header.y, 0f)
+                            anim.duration = 300
+                            anim.fillAfter = true
                             header.startAnimation(anim)
                         }
                     }

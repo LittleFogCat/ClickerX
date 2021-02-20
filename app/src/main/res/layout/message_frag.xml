@@ -2,6 +2,7 @@
 <layout>
 
     <data>
+
         <variable
             name="viewModel"
             type="top.littlefogcat.clickerx.message.MessageViewModel" />
