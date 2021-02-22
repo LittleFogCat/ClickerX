@@ -1,6 +1,7 @@
 package top.littlefogcat.clickerx.utils
 
 import android.app.Activity
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.view.View
@@ -46,7 +47,7 @@ fun AppCompatActivity.replaceFragmentIfAbsent(id: Int, frag: Fragment) {
         ?: replaceFragment(id, frag)
 }
 
-fun AppCompatActivity.loadDrawable(resId: Int) =
+fun Context.loadDrawable(resId: Int) =
     ResourcesCompat.getDrawable(resources, resId, theme)
 
 fun AppCompatActivity.loadColor(colorId: Int) =

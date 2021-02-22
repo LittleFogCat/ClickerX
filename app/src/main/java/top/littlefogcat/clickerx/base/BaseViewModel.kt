@@ -19,6 +19,7 @@ open class BaseViewModel : ViewModel() {
         return coroutine.launch(Dispatchers.IO, block = block)
     }
 
+
     /**
      * 在IO线程执行[block]，在主线程执行回调[callback]。
      */
@@ -33,7 +34,6 @@ open class BaseViewModel : ViewModel() {
 
     /**
      * 在IO线程执行[block]，并在主线程将返回值赋值给[liveData]。
-     * 这个函数适合一个LiveData对应一个api的情况。
      */
     protected fun <T> runOnIO(liveData: MutableLiveData<T>, block: () -> T): Job {
         return coroutine.launch(Dispatchers.IO) {
@@ -44,11 +44,15 @@ open class BaseViewModel : ViewModel() {
         }
     }
 
-    protected fun runOnUIThread(action: () -> Unit) {
-        coroutine.launch(Dispatchers.Main) {
-            action.invoke()
-        }
+    protected suspend fun runOnMainThread(block: suspend CoroutineScope.() -> Unit) {
+        withContext(Dispatchers.Main, block)
     }
+
+//    protected fun runOnUIThread(action: () -> Unit) {
+//        coroutine.launch(Dispatchers.Main) {
+//            action.invoke()
+//        }
+//    }
 
     override fun onCleared() {
         super.onCleared()

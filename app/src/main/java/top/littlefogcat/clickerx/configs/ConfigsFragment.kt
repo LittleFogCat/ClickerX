@@ -5,6 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import top.littlefogcat.clickerx.R
 import top.littlefogcat.clickerx.base.BaseFragment
+import top.littlefogcat.clickerx.base.BaseViewPagerFragment
 import top.littlefogcat.clickerx.databinding.ConfigsFragBinding
 
 /**
@@ -14,13 +15,13 @@ import top.littlefogcat.clickerx.databinding.ConfigsFragBinding
  * @Date 2020/8/4-2:08
  * @Email littlefogcat@foxmail.com
  */
-class ConfigsFragment private constructor() : BaseFragment<ConfigsFragBinding>() {
+class ConfigsFragment private constructor() : BaseViewPagerFragment<ConfigsFragBinding>() {
     override val layoutId = R.layout.configs_frag
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = ConfigsAdapter()
+//            adapter = ConfigsAdapter() todo
         }
     }
 

@@ -17,7 +17,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/searchLayout"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/title_bar_height"
             android:background="@android:color/white"
             android:orientation="horizontal"
             app:cardElevation="2dp">
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/gray_e"
+            android:background="#f7f7f7"
             app:recycler_data="@{viewModel.recommendList}" />
 
     </LinearLayout>

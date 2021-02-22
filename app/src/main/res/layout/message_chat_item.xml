@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="top.littlefogcat.clickerx.message.MessageChatItem" />
+
+        <import type="top.littlefogcat.clickerx.utils.DateUtil" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_marginBottom="-1px"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/message_chat_item_avatar_size"
+            android:layout_height="@dimen/message_chat_item_avatar_size"
+            android:layout_centerVertical="true"
+            app:imageUrl="@{item.avatarUrl}"
+            tools:src="@drawable/ic_tab_message_round" />
+
+        <View
+            android:id="@+id/midView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toRightOf="@id/avatar" />
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/midView"
+            android:layout_marginRight="42dp"
+            android:layout_toRightOf="@id/midView"
+            android:text="@{item.title}"
+            android:textColor="@color/base_black"
+            android:textSize="@dimen/recy_text_title_size"
+            android:textStyle="bold"
+            tools:text="站务通知" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/midView"
+            android:layout_marginRight="42dp"
+            android:layout_toRightOf="@id/midView"
+            android:singleLine="true"
+            android:text="@{item.content}"
+            android:textColor="#888888"
+            android:textSize="@dimen/recy_text_content_size"
+            tools:text="被删除，因多次违规你被禁言7天" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/titleText"
+            android:layout_alignParentRight="true"
+            android:contentDescription="最后一条消息时间"
+            android:text="@{DateUtil.INSTANCE.dayDiffFromNowToHuman(item.lastMessageTime)}"
+            android:textColor="#aaaaaa"
+            android:textSize="@dimen/small_text_size"
+            tools:text="2年前" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_toRightOf="@id/midView"
+            android:background="@color/gray_light" />
+    </RelativeLayout>
+</layout>

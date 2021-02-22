@@ -10,7 +10,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.accessibility.AccessibilityNodeInfo
 
-const val TAG = "AccessibilityUtils"
+private const val TAG = "AccessibilityUtils"
 
 /**
  * 检测是否本辅助功能开启

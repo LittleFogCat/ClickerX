@@ -32,8 +32,8 @@ class MainActivity : BaseActivity() {
             override fun createFragment(position: Int): Fragment {
                 return when (position) {
                     0 -> HomeFragment.newInstance()
-                    1 -> ConfigsFragment.newInstance()
-                    2 -> MessageFragment.newInstance()
+                    1 -> MessageFragment.newInstance()
+                    2 -> ConfigsFragment.newInstance()
                     3 -> ConfigsFragment.newInstance()
                     else -> throw IllegalArgumentException("position invalid: $position")
                 }
@@ -53,6 +53,7 @@ class MainActivity : BaseActivity() {
         })
 
 
+        tabLayout.setSelectedTabIndicator(null)
         // 当TabLayout选择状态发生变化时，调整对应Tab的图标。
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             val normalIcons = arrayOf(

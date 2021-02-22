@@ -1,7 +1,7 @@
 package top.littlefogcat.clickerx.model.entities
 
 /**
- * 普通用户
+ * 用户基本信息
  *
  * [id] 用户id
  * [username] 用户昵称
@@ -18,7 +18,7 @@ package top.littlefogcat.clickerx.model.entities
  * [points] 积分
  */
 class User(
-    val id: Int,
+    val id: Long,
     val username: String,
     val avatar: String,
     val desc: String,

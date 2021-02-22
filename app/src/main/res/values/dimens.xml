@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_bar_height">48dp</dimen>
+    <dimen name="title_text_size">18sp</dimen>
+    <dimen name="message_chat_item_avatar_size">44dp</dimen>
+    <dimen name="recy_text_title_size">15sp</dimen>
+    <dimen name="recy_text_content_size">13sp</dimen>
+    <dimen name="small_text_size">12sp</dimen>
+</resources>

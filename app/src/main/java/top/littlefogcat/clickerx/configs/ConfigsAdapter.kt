@@ -11,18 +11,11 @@ import top.littlefogcat.clickerx.model.entities.Config
  * @Date 2020/8/4-1:19
  * @Email littlefogcat@foxmail.com
  */
-class ConfigsAdapter : BaseDataBindingAdapter<Config, ConfigsAdapter.ViewHolder>() {
+class ConfigsAdapter : BaseDataBindingAdapter<Config, ConfigsFragBinding>() {
+    override fun onBindViewHolder(binding: ConfigsFragBinding, item: Config) {
 
-    class ViewHolder(binding: ConfigsFragBinding) : AbstractDataBindingAdapter.ViewHolder(binding) {}
-
-    override fun <B> onCreateViewHolder(binding: B): ViewHolder {
-        return ViewHolder(binding as ConfigsFragBinding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, item: Config) {
-    }
+    override fun getLayoutId(viewType: Int): Int = R.layout.configs_frag
 
-    override fun getLayoutId(viewType: Int): Int {
-        return R.layout.configs_frag
-    }
 }

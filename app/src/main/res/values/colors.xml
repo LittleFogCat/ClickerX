@@ -11,4 +11,8 @@
     <color name="gray_9">#999999</color>
     <color name="gray_c">#cccccc</color>
     <color name="gray_e">#eeeeee</color>
+
+    <color name="message_chat_item_sample_avatar_bg">#637283</color>
+    <color name="gray_light">#e0e0e0</color>
+    <color name="white">#ffffff</color>
 </resources>
