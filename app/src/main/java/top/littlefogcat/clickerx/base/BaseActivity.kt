@@ -2,8 +2,6 @@ package top.littlefogcat.clickerx.base
 
 import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import top.littlefogcat.clickerx.utils.replaceFragment
 
 /**
  * @Author：littlefogcat
@@ -17,14 +15,15 @@ abstract class BaseActivity : AppCompatActivity() {
 
     private val touchEventHandlers = mutableListOf<TouchEventHandler>()
 
-    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
         var handled = false
         for (handler in touchEventHandlers) {
-            if (handler.onTouchEvent(ev)) {
-                handled = true
+            if (handler is BaseFragment<*> && !handler.isResumed) {
+                continue
             }
+            handled = handler.dispatchTouchEvent(event) || handled
         }
-        return handled || super.dispatchTouchEvent(ev)
+        return handled || super.dispatchTouchEvent(event)
     }
 
     fun addTouchEventHandler(handler: TouchEventHandler) {
@@ -35,7 +34,7 @@ abstract class BaseActivity : AppCompatActivity() {
         touchEventHandlers.remove(handler)
     }
 
-    fun removeAllTouchEventHandler(){
+    fun removeAllTouchEventHandler() {
         touchEventHandlers.clear()
     }
 }

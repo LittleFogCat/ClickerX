@@ -2,11 +2,8 @@ package top.littlefogcat.clickerx.base
 
 import android.content.Context
 import android.view.MotionEvent
-import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import kotlinx.coroutines.*
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
 
 /**
  * Fragment基类，继承自[DataBindingFragment]。
@@ -44,7 +41,7 @@ abstract class BaseFragment<T : ViewDataBinding> : DataBindingFragment<T>(), Tou
         }
     }
 
-    override fun onTouchEvent(event: MotionEvent) = false
+    override fun dispatchTouchEvent(event: MotionEvent) = false
 
     override fun onDestroy() {
         super.onDestroy()

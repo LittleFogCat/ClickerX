@@ -1,16 +1,22 @@
 package top.littlefogcat.clickerx.home
 
+import android.animation.Animator
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.TranslateAnimation
+import android.view.ViewParent
+import android.view.animation.LinearInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import top.littlefogcat.clickerx.R
 import top.littlefogcat.clickerx.base.BaseFragment
 import top.littlefogcat.clickerx.databinding.HomeFragBinding
 import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.min
 
 /**
  * @Author：littlefogcat
@@ -38,21 +44,34 @@ class HomeFragment private constructor() : BaseFragment<HomeFragBinding>() {
         binding.viewModel?.loadRecommendSearch()
     }
 
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        return touchEventHandler.handle(event)
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        return touchEventHandler.dispatch(event)
     }
 
     private val touchEventHandler = object {
         private val UNDEFINE = 0
         private val VERTICAL = 1
+
+        @Deprecated("no use")
         private val HORIZONTAL = 2
         private var downX = 0
         private var downY = 0
         private var lastX = 0
         private var lastY = 0
-        private var direction = UNDEFINE
+        private var scrollMode = UNDEFINE
+        private val viewPager: ViewPager2 by lazy {
+            var v: ViewParent = binding.root as ViewGroup
+            while (v !is ViewPager2) {
+                v = v.parent
+            }
+            v
+        }
+        private var runningAnim: Animator? = null
 
-        fun handle(event: MotionEvent): Boolean {
+        /**
+         * 主要拦截上下滑动的时候需要隐藏/显示头部的事件
+         */
+        fun dispatch(event: MotionEvent): Boolean {
             val header = header()
             val x = event.rawX.toInt()
             val y = event.rawY.toInt()
@@ -66,58 +85,76 @@ class HomeFragment private constructor() : BaseFragment<HomeFragBinding>() {
                 MotionEvent.ACTION_MOVE -> {
                     val dx = x - lastX
                     val dy = y - lastY
-                    if (direction == UNDEFINE) {
-                        direction = if (abs(dx) > abs(dy)) {
-                            HORIZONTAL
-                        } else VERTICAL
-                    }
-
-                    // 处理头部headerLayout
-                    Log.v(TAG, "handle: dy = $dy")
-                    if (direction == VERTICAL) {
-                        val lp = header.layoutParams as ViewGroup.MarginLayoutParams
-                        val height = header.height
-                        val minMargin = 0 - height
-                        if (dy < 0 && lp.topMargin + height > 0) { // 往上滑
-                            Log.d(TAG, "handle: up")
-                            val topMargin = lp.topMargin + dy
-                            lp.topMargin = if (topMargin < minMargin) minMargin else topMargin
-                            header.layoutParams = lp
-                            return true
-                        } else if (dy > 0 && lp.topMargin < 0) { // 往下滑
-                            Log.d(TAG, "handle: down")
-                            val topMargin = lp.topMargin + dy
-                            lp.topMargin = if (topMargin > 0) 0 else topMargin
-                            header.layoutParams = lp
-                            return true
-                        }
-                    }
                     lastX = x
                     lastY = y
-                }
-                MotionEvent.ACTION_UP -> {
-                    if (header.top < 0 && header.bottom > 0) {
-                        if (header.top + header.bottom > 0) {
-                            // 大部分显示，则滑出
-                            val anim = TranslateAnimation(header.x, header.x, header.y, 0f)
-                            anim.duration = 300
-                            anim.fillAfter = true
-                            header.startAnimation(anim)
-                        } else {
-                            // 大部分不显示
-                            val anim = TranslateAnimation(header.x, header.x, header.y, 0f)
-                            anim.duration = 300
-                            anim.fillAfter = true
-                            header.startAnimation(anim)
+
+                    if (viewPager.scrollState != ViewPager2.SCROLL_STATE_IDLE) {
+                        // ViewPager正在拖动，交由ViewPager处理
+                        return false
+                    }
+                    if (scrollMode == UNDEFINE && abs(dy) > abs(dx)) {
+                        scrollMode = VERTICAL // 竖直滑动
+                    }
+
+                    // 一旦进入VERTICAL模式，就不允许左右滑动了
+                    if (scrollMode == VERTICAL) { // 正在上下滑动
+                        if (viewPager.isUserInputEnabled) { // 禁止ViewPager拖动
+                            viewPager.isUserInputEnabled = false
+                        }
+                        val lp = header.layoutParams as ViewGroup.MarginLayoutParams
+                        val height = header.height
+                        val margin = lp.topMargin
+                        val minMargin = -height
+                        val newMargin =
+                            if (dy < 0 && lp.topMargin + height > 0) { // 往上滑
+                                max(minMargin, lp.topMargin + dy) // 不小于minMargin
+                            } else if (dy > 0 && lp.topMargin < 0) { // 往下滑
+                                min(lp.topMargin + dy, 0) // 不大于0
+                            } else margin
+                        if (newMargin != margin) { // 拦截事件，操作header
+                            lp.topMargin = newMargin
+                            header.layoutParams = lp
+                            return true
                         }
                     }
                 }
-                else -> {
-
+                MotionEvent.ACTION_UP -> {
+                    startHeaderAnimation()
+                    scrollMode = UNDEFINE
+                    viewPager.isUserInputEnabled = true
                 }
             }
             return false
         }
+
+        private fun startHeaderAnimation() {
+            Log.d(TAG, "startHeaderAnimation: ")
+            if (runningAnim != null && runningAnim!!.isRunning) {
+                Log.i(TAG, "startHeaderAnimation: already running")
+                return
+            }
+            val header = header()
+            val h = header.height
+            val lp = header.layoutParams as ViewGroup.MarginLayoutParams
+            val marginTop = lp.topMargin
+            val midMargin = -h / 2
+
+            if (marginTop <= -h || marginTop >= 0) return // 已经完全显示或隐藏
+
+            // 在中点之上，隐藏；在中点之下，显示
+            runningAnim = ValueAnimator.ofInt(marginTop, if (marginTop < midMargin) -h else 0)
+                .apply {
+                    duration = 300
+//                    interpolator = LinearInterpolator()
+                    addUpdateListener {
+                        val value = it.animatedValue as Int // 动画进行程度的百分数
+                        lp.topMargin = value
+                        header.layoutParams = lp
+                    }
+                    start()
+                }
+        }
+
     }
 
     /**
