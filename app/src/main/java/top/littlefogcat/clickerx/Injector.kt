@@ -1,14 +1,16 @@
 package top.littlefogcat.clickerx
 
 import top.littlefogcat.clickerx.model.*
+import top.littlefogcat.clickerx.utils.ImageLoader
+import top.littlefogcat.clickerx.utils.ImageLoaderImpl
 
 /**
- * 通过注入的方式来创建对象。
+ * 根据不同的变体提供不同的对象。
+ *
  * 这样在更换数据源的时候就不需要改动太多代码，只需要在特定的数据源中修改具体实现就可以了。
  * 当切换BuildVariants的时候，就会相应的切换数据源。
  *
  * @Author littlefogcat
- * @Date 2020/8/4-2:22
  * @Email littlefogcat@foxmail.com
  */
 object Injector {
@@ -20,7 +22,7 @@ object Injector {
     /**
      * 返回本地配置文件的数据源。
      */
-    fun provideLocalConfigsDataSource(): LocalConfigsDataSource = LocalConfigsRepository()
+    fun provideConfigsDataSource(): ScrpitsDataSource = ScriptsRepository
 
     /**
      * 消息列表的数据源。
@@ -31,4 +33,9 @@ object Injector {
      * 用户信息的数据源。
      */
     fun provideUserDataSource(): UserDataSource = UserRepository()
+
+    /**
+     * 提供[ImageLoader]的实现类
+     */
+    fun provideImageLoader(): ImageLoader = ImageLoaderImpl
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/title_bar_height"
+    android:background="@color/white"
+    android:elevation="2dp">
+
+    <ImageView
+        android:id="@+id/toolbar_btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:padding="12dp"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/toolbar_tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/base_black"
+        android:textSize="@dimen/title_text_size" />
+
+    <ImageView
+        android:id="@+id/toolbar_btnDone"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|right"
+        android:padding="12dp"
+        android:src="@drawable/ic_done" />
+
+</FrameLayout>

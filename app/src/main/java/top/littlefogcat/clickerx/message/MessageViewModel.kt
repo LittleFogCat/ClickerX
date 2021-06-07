@@ -21,9 +21,7 @@ class MessageViewModel : BaseViewModel() {
             }.sortedBy {
                 -it.lastMessageTime
             }
-            runOnMainThread {
-                messageChatItemList.value = mcl
-            }
+            messageChatItemList.postValue(mcl)
         }
 
     }

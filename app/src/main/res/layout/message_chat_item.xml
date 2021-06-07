@@ -23,7 +23,7 @@
             android:layout_width="@dimen/message_chat_item_avatar_size"
             android:layout_height="@dimen/message_chat_item_avatar_size"
             android:layout_centerVertical="true"
-            app:imageUrl="@{item.avatarUrl}"
+            app:imageSrc="@{item.avatarUrl}"
             tools:src="@drawable/ic_tab_message_round" />
 
         <View

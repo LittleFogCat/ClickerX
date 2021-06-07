@@ -1,6 +1,7 @@
 package top.littlefogcat.clickerx.model
 
 import top.littlefogcat.clickerx.model.entities.RecommendItem
+import top.littlefogcat.clickerx.model.entities.RecommendSearchItem
 import top.littlefogcat.clickerx.model.entities.User
 
 class RecommendRepository : RecommendDataSource {

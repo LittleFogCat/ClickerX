@@ -8,12 +8,12 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewParent
-import android.view.animation.LinearInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseFragment
+import top.littlefogcat.clickerx.base.BaseViewPagerFragment
 import top.littlefogcat.clickerx.databinding.HomeFragBinding
+import top.littlefogcat.clickerx.utils.getViewModel
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -23,11 +23,11 @@ import kotlin.math.min
  * @Date：2021/1/30-8:17
  * @Email：littlefogcat@foxmail.com
  */
-class HomeFragment private constructor() : BaseFragment<HomeFragBinding>() {
+class HomeFragment : BaseViewPagerFragment<HomeFragBinding>() {
     override val layoutId: Int = R.layout.home_frag
 
-    override fun onCreateViewModel() {
-        binding.viewModel = HomeViewModel()
+    override fun onDataBinding(binding: HomeFragBinding) {
+        binding.viewModel = getViewModel(HomeViewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -128,7 +128,7 @@ class HomeFragment private constructor() : BaseFragment<HomeFragBinding>() {
         }
 
         private fun startHeaderAnimation() {
-            Log.d(TAG, "startHeaderAnimation: ")
+//            Log.d(TAG, "startHeaderAnimation: ")
             if (runningAnim != null && runningAnim!!.isRunning) {
                 Log.i(TAG, "startHeaderAnimation: already running")
                 return

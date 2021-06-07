@@ -2,6 +2,10 @@ package top.littlefogcat.clickerx.utils
 
 import android.view.MotionEvent
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 
 inline fun <T> T?.invokeIfNotNull(action: () -> T): T = this ?: action.invoke()
 
@@ -18,5 +22,6 @@ fun ViewGroup.MarginLayoutParams.getTopMargin(): Int {
 fun MotionEvent.string(): String? {
     return MotionEvent.actionToString(action)
 }
+
 val MotionEvent.string: String
-    get()=MotionEvent.actionToString(action)
+    get() = MotionEvent.actionToString(action)

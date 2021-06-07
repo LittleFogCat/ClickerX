@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase
 
 /**
  * @Author littlefogcat
- * @Date 2020/8/4-11:23
  * @Email littlefogcat@foxmail.com
  */
 @Database(entities = [Config::class], version = 1)

@@ -1,7 +1,5 @@
 package top.littlefogcat.clickerx.utils
 
-import kotlin.math.absoluteValue
-
 /**
  * @Author：littlefogcat
  * @Date：2021/2/22-23:15

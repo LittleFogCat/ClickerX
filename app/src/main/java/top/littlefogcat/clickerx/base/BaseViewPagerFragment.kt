@@ -1,11 +1,8 @@
 package top.littlefogcat.clickerx.base
 
-import android.view.MotionEvent
 import android.view.View
-import androidx.annotation.CallSuper
 import androidx.databinding.ViewDataBinding
 import androidx.viewpager2.widget.ViewPager2
-import kotlin.math.abs
 
 /**
  * 在ViewPager2中的Fragment
@@ -27,31 +24,30 @@ abstract class BaseViewPagerFragment<T : ViewDataBinding> : BaseFragment<T>() {
     private var x = 0
     private var y = 0
 
-    @CallSuper
-    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
-        if (viewPager.scrollState != ViewPager2.SCROLL_STATE_IDLE) {
-            return false
-        }
-
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                x = event.x.toInt()
-                y = event.y.toInt()
-            }
-            MotionEvent.ACTION_MOVE -> {
-                if (viewPager.isUserInputEnabled) {
-                    val dx: Int = (event.x - x).toInt()
-                    val dy: Int = (event.y - y).toInt()
-                    if (abs(dy) > abs(dx)) {
-                        // 竖直滚动，禁用viewpager
-                        viewPager.isUserInputEnabled = false
-                    }
-                }
-            }
-            MotionEvent.ACTION_UP -> {
-                viewPager.isUserInputEnabled = true
-            }
-        }
-        return false
-    }
+//    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+//        if (viewPager.scrollState != ViewPager2.SCROLL_STATE_IDLE) {
+//            return false
+//        }
+//
+//        when (event.action) {
+//            MotionEvent.ACTION_DOWN -> {
+//                x = event.x.toInt()
+//                y = event.y.toInt()
+//            }
+//            MotionEvent.ACTION_MOVE -> {
+//                if (viewPager.isUserInputEnabled) {
+//                    val dx: Int = (event.x - x).toInt()
+//                    val dy: Int = (event.y - y).toInt()
+//                    if (abs(dy) > abs(dx)) {
+//                        // 竖直滚动，禁用viewpager
+//                        viewPager.isUserInputEnabled = false
+//                    }
+//                }
+//            }
+//            MotionEvent.ACTION_UP -> {
+//                viewPager.isUserInputEnabled = true
+//            }
+//        }
+//        return false
+//    }
 }

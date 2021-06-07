@@ -3,9 +3,11 @@ package top.littlefogcat.clickerx.base
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import top.littlefogcat.clickerx.R
 
 /**
  * @Author：littlefogcat
@@ -21,16 +23,22 @@ abstract class DataBindingFragment<T : ViewDataBinding> : Fragment() {
             .also {
                 binding = it
                 binding.lifecycleOwner = this
-                onCreateViewModel()
-            }.root
+                onDataBinding(it)
+            }
+            .root
 
     /**
-     * 当[binding]绑定成功，调用这个回调，初始化ViewModel
+     * 当[binding]绑定成功，调用这个回调。
+     * 在这里传递绑定中需要的数据，例如初始化ViewModel。可以通过[binding]获取布局文件中的控件。
      *
-     * binding.viewModel1 = ViewModel1()
-     * binding.viewModel2 = ViewModel2()
-     * ....
+     * 例如：
+     * ```
+     * override fun onDataBinding(binding: SampleBinding) {
+     *      binding.viewModel = ViewModel();
+     *      binding.button.setOnClickListener{ exit() }
+     * }
+     * ```
      */
-    abstract fun onCreateViewModel()
+    abstract fun onDataBinding(binding: T)
 
 }

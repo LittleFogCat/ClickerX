@@ -1,5 +1,8 @@
 package top.littlefogcat.clickerx.model.entities
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 /**
  * 用户基本信息
  *
@@ -17,8 +20,9 @@ package top.littlefogcat.clickerx.model.entities
  * [tags] 标签
  * [points] 积分
  */
-class User(
-    val id: Long,
+@Entity
+data class User(
+    @PrimaryKey val id: Long,
     val username: String,
     val avatar: String,
     val desc: String,

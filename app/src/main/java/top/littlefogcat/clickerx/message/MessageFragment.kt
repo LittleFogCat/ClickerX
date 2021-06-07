@@ -1,17 +1,15 @@
 package top.littlefogcat.clickerx.message
 
 import android.os.Bundle
-import android.view.MotionEvent
 import android.view.View
-import top.littlefogcat.clickerx.base.BaseFragment
-import top.littlefogcat.clickerx.databinding.MessageFragBinding
 import top.littlefogcat.clickerx.R
 import top.littlefogcat.clickerx.base.BaseViewPagerFragment
+import top.littlefogcat.clickerx.databinding.MessageFragBinding
 
-class MessageFragment private constructor() : BaseViewPagerFragment<MessageFragBinding>() {
+class MessageFragment : BaseViewPagerFragment<MessageFragBinding>() {
     override val layoutId: Int = R.layout.message_frag
 
-    override fun onCreateViewModel() {
+    override fun onDataBinding(binding: MessageFragBinding) {
         binding.viewModel = MessageViewModel()
     }
 

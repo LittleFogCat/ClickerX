@@ -4,8 +4,11 @@ import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 
 /**
+ * Activity基类。
+ *
+ * 实现了Fragment分发事件。
+ *
  * @Author：littlefogcat
- * @Date：2021/1/30-8:18
  * @Email：littlefogcat@foxmail.com
  */
 abstract class BaseActivity : AppCompatActivity() {
@@ -13,6 +16,9 @@ abstract class BaseActivity : AppCompatActivity() {
         javaClass.simpleName
     }
 
+    /**
+     * Fragment实现[TouchEventHandler]并调用[addTouchEventHandler]以分发触摸事件
+     */
     private val touchEventHandlers = mutableListOf<TouchEventHandler>()
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {

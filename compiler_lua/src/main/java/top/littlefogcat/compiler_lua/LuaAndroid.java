@@ -1,12 +1,7 @@
 package top.littlefogcat.compiler_lua;
 
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.jse.JsePlatform;
-
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 使用LuaJ加载Lua脚本。
@@ -29,12 +24,18 @@ public class LuaAndroid {
         return new LuaAndroid();
     }
 
+    /**
+     * 加载一段Lua代码
+     */
     public LuaAndroid load(String code) {
         LuaValue chunk = globals.load(code, "chunk-" + chunks.size());
         chunks.add(chunk);
         return this;
     }
 
+    /**
+     * 从字符流中加载一段Lua代码
+     */
     public LuaAndroid load(Reader code) {
         LuaValue chunk = globals.load(code, "chunk-" + chunks.size());
         chunks.add(chunk);

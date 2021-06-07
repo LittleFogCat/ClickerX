@@ -1,6 +1,7 @@
 package top.littlefogcat.clickerx.model
 
 import top.littlefogcat.clickerx.model.entities.RecommendItem
+import top.littlefogcat.clickerx.model.entities.RecommendSearchItem
 
 /**
  * 推荐相关接口

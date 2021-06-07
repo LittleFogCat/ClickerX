@@ -3,8 +3,12 @@ package top.littlefogcat.clickerx.base
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
+import top.littlefogcat.clickerx.Injector
 
 /**
+ * 继承[BaseViewModel]实现具体的ViewModel。
+ * 通过[Injector]获取相应的Repository。
+ *
  * @Author：littlefogcat
  * @Date：2021/1/30-8:32
  * @Email：littlefogcat@foxmail.com
@@ -38,21 +42,9 @@ open class BaseViewModel : ViewModel() {
     protected fun <T> runOnIO(liveData: MutableLiveData<T>, block: () -> T): Job {
         return coroutine.launch(Dispatchers.IO) {
             val result = block.invoke()
-            withContext(Dispatchers.Main) {
-                liveData.value = result
-            }
+            liveData.postValue(result)
         }
     }
-
-    protected suspend fun runOnMainThread(block: suspend CoroutineScope.() -> Unit) {
-        withContext(Dispatchers.Main, block)
-    }
-
-//    protected fun runOnUIThread(action: () -> Unit) {
-//        coroutine.launch(Dispatchers.Main) {
-//            action.invoke()
-//        }
-//    }
 
     override fun onCleared() {
         super.onCleared()

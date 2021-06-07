@@ -1,14 +1,10 @@
 package top.littlefogcat.clickerx.home
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import top.littlefogcat.clickerx.Injector
 import top.littlefogcat.clickerx.base.BaseViewModel
 import top.littlefogcat.clickerx.model.entities.RecommendItem
-import top.littlefogcat.clickerx.model.RecommendSearchItem
-import top.littlefogcat.clickerx.utils.TAG
+import top.littlefogcat.clickerx.model.entities.RecommendSearchItem
 import kotlin.random.Random
 
 /**
@@ -40,10 +36,8 @@ class HomeViewModel : BaseViewModel() {
         runOnIO {
             val _searchList = recommendRepository.getRecommendSearchList()
             val idx = Random.Default.nextInt(_searchList.size)
-            withContext(Dispatchers.Main) {
-                searchList.value = _searchList
-                searchHint.value = _searchList[idx]
-            }
+            searchList.postValue(_searchList)
+            searchHint.postValue(_searchList[idx])
         }
     }
 

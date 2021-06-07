@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="top.littlefogcat.clickerx.me.MeViewModel" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/listView"
+            list_data="@{viewModel.listData}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_e"
+            android:divider="@drawable/me_list_divider"
+            android:dividerHeight="1px"
+            android:fastScrollEnabled="true"
+            tools:listheader="@layout/me_list_item_header"
+            tools:listitem="@layout/me_list_item_plain" />
+    </FrameLayout>
+</layout>

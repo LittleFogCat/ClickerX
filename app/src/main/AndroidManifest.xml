@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="top.littlefogcat.clickerx">
-
+    <!-- 网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 读存储 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 写存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 保持唤醒 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 解锁 -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
     <application
         android:name=".App"
@@ -12,9 +20,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".main.MainActivity" />
+        <activity android:name=".scriptdetail.ScriptDetailActivity" />
+        <activity android:name=".addconfig.AddConfigActivity" />
+        <activity
+            android:name="top.littlefogcat.clickerx.core.accessibility.DummyActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance" />
+        <!-- 辅助功能服务 -->
         <service
-            android:name=".accessibility.ClickerXAccessibilityService"
+            android:name="top.littlefogcat.clickerx.core.accessibility.ClickerXA11yService"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
@@ -25,17 +47,26 @@
                 android:name="android.accessibilityservice"
                 android:resource="@xml/accessibility" />
         </service>
-
-        <activity android:name=".SplashActivity">
+        <!-- 通知监听服务 -->
+        <service
+            android:name="top.littlefogcat.clickerx.core.accessibility.NotificationObserverService"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
-        </activity>
-        <activity android:name=".main.MainActivity" />
-        <activity android:name=".addconfig.AddConfigActivity" />
-        <activity android:name=".configs.ConfigsActivity" />
+        </service>
+        <!-- 事件监听服务 -->
+        <service
+            android:name="top.littlefogcat.clickerx.core.accessibility.EventHandleService"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/ims" />
+        </service>
     </application>
 
 </manifest>
