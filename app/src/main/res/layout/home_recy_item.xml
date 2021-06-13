@@ -5,7 +5,7 @@
 
         <variable
             name="item"
-            type="top.littlefogcat.clickerx.model.entities.RecommendItem" />
+            type="top.littlefogcat.clickerx.db.entities.RecommendItem" />
     </data>
 
 

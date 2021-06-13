@@ -1,8 +1,8 @@
-include ':sample'
-include ':compiler'
-include ':recorder_app'
-include ':recorder'
-include ':base'
-include ':app'
 rootProject.name = "ClickerX"
-include ':shell'
+include ':lib_compiler'
+//include ':module_recorder' // 暂时不做
+include ':lib_common'
+include ':app'
+include ':lib_shell'
+include ':module_clickercore'
+include ':component_db'

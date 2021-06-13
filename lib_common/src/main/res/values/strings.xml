@@ -1,0 +1,30 @@
+<!DOCTYPE resources [<!ENTITY appname "Easy Click">]>
+<resources>
+    <string name="app_name">&appname;</string>
+    <string name="add_config">Add config</string>
+    <string name="config_files">Configs</string>
+    <string name="settings">Settings</string>
+    <string name="no_config_file">No configs yet.</string>
+    <string name="accessibility_desc">Enable to use &appname; normally</string>
+
+    <string name="confirm">OK</string>
+
+    <string name="enable_accessibility_dialog_title">Need accessibility permission enabled</string>
+    <string name="enable_accessibility_dialog_content">Press OK, find \"&appname;\" in settings, and enable accessibility permission for &appname;.</string>
+    <string name="home">home</string>
+    <string name="message">message</string>
+    <string name="discover">discover</string>
+    <string name="me">me</string>
+    <string name="search">search</string>
+    <string name="local">local</string>
+    <string name="local_configs">Local Configs</string>
+    <string name="feature_todo">Feature not yet completed.</string>
+    <string name="state_paused">inactivated</string>
+    <string name="state_unscheduled">unscheduled</string>
+    <string name="state_activated">activated</string>
+    <string name="button_to_run_this_script_once">button to run this script once</string>
+    <string name="button_to_schedule_this_script">button to schedule this script</string>
+    <string name="title_config_detail">Config Detail</string>
+    <string name="title_config_edit">Edit Script</string>
+    <string name="edit_this_script">edit this script</string>
+</resources>

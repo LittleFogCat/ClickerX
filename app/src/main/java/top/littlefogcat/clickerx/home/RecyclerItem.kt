@@ -1,7 +1,7 @@
 package top.littlefogcat.clickerx.home
 
 import androidx.lifecycle.MutableLiveData
-import top.littlefogcat.clickerx.model.entities.User
+import top.littlefogcat.clickerx.db.entities.User
 
 class RecyclerItem {
     val title = MutableLiveData<String>()

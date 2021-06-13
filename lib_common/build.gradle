@@ -1,0 +1,70 @@
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
+
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName version_name
+
+        testInstrumentationRunner test_instrumentation_runner
+        consumerProguardFiles consumer_proguard
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(default_proguard_file), proguad_file
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName()) // ARouter 配置
+    }
+}
+
+dependencies {
+    compileOnly files('libs/luaj-jse-3.0.1.jar')
+
+    implementation dep.appcompat
+    compileOnly dep.core_ktx
+    compileOnly dep.navigation_frag
+    compileOnly dep.navigation_ui
+    compileOnly dep.room_runtime
+    compileOnly dep.room_ktx
+    kapt dep.room_compiler
+//    compileOnly dep.design
+    compileOnly dep.material
+    compileOnly dep.kotlin
+    compileOnly dep.coroutines
+
+    compileOnly dep.arouter
+    kapt dep.arouter_compiler
+    implementation dep.glide
+    compileOnly dep.gson
+    compileOnly dep.okhttp
+
+    // 测试
+    testCompileOnly dep.junit
+    testCompileOnly dep.room_test
+    androidTestCompileOnly dep.junitx
+    androidTestCompileOnly dep.espressox
+}

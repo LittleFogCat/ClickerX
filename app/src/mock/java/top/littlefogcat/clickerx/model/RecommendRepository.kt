@@ -1,8 +1,9 @@
 package top.littlefogcat.clickerx.model
 
-import top.littlefogcat.clickerx.model.entities.RecommendItem
-import top.littlefogcat.clickerx.model.entities.RecommendSearchItem
-import top.littlefogcat.clickerx.model.entities.User
+import top.littlefogcat.clickerx.Mocker
+import top.littlefogcat.clickerx.db.entities.RecommendItem
+import top.littlefogcat.clickerx.db.entities.RecommendSearchItem
+import top.littlefogcat.clickerx.db.entities.User
 
 class RecommendRepository : RecommendDataSource {
     override fun getRecommendList() = arrayListOf(
@@ -11,7 +12,7 @@ class RecommendRepository : RecommendDataSource {
             User(
                 0,
                 "小母牛",
-                "https://profile.csdnimg.cn/8/3/E/0_zengsidou",
+                Mocker.avatar(),
                 "nothing",
                 18,
                 "男"
@@ -22,56 +23,70 @@ class RecommendRepository : RecommendDataSource {
         ),
         RecommendItem(
             "微信自动回复",
-            User(1, "littlefogcat", "", "a cat", 18, "男"),
+            User(
+                1,
+                "littlefogcat",
+                Mocker.avatar(),
+                "a cat",
+                18,
+                "男"
+            ),
             "微信自动回复，自动抢红包，指定回复内容，AI自动对话",
             999,
             99
         ),
         RecommendItem(
             "随机点击屏幕",
-            User(2, "小羊羊", "", "young", 21, "女"),
+            User(2, "小羊羊", Mocker.avatar(), "young", 21, "女"),
             "随机点击屏幕上的某个点，可以指定区域、次数和间隔",
             41,
             0
         ),
         RecommendItem(
             "视频自动点赞",
-            User(2, "小羊羊", "", "young", 21, "女"),
+            User(
+                2,
+                "小羊羊",
+                Mocker.avatar(),
+                "young",
+                21,
+                "女"
+            ),
             "视频自动点赞",
             41,
             0
         ),
         RecommendItem(
             "视频自动点踩",
-            User(2, "小羊羊", "", "young", 21, "女"),
+            User(2, "小羊羊", Mocker.avatar(), "young", 21, "女"),
             "视频自动点赞",
             41,
             0
         ),
         RecommendItem(
             "微信自动回复",
-            User(1, "littlefogcat", "", "a cat", 18, "男"),
+            User(1, "littlefogcat", Mocker.avatar(), "a cat", 18, "男"),
             "微信自动回复，自动抢红包，指定回复内容，AI自动对话",
             999,
             99
         ),
         RecommendItem(
             "随机点击屏幕",
-            User(2, "小羊羊", "", "young", 21, "女"),
+            User(2, "小羊羊", Mocker.avatar(), "young", 21, "女"),
             "随机点击屏幕上的某个点，可以指定区域、次数和间隔",
             41,
             0
         ),
         RecommendItem(
             "视频自动点赞",
-            User(2, "小羊羊", "", "young", 21, "女"),
+            User(2, "小羊羊", Mocker.avatar(), "young", 21, "女"),
             "视频自动点赞",
             41,
             0
         ),
         RecommendItem(
             "视频自动点踩",
-            User(2, "小羊羊", "", "young", 21, "女"),
+            User(2, "小羊羊", Mocker.avatar(), "young", 21, "女"),
             "视频自动点赞",
             41,
             0

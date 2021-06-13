@@ -13,12 +13,12 @@ import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseFragment
-import top.littlefogcat.clickerx.base.DefaultToolbarHolder
+import top.littlefogcat.clickerx.common.base.BaseFragment
+import top.littlefogcat.clickerx.common.base.DefaultToolbarHolder
 import top.littlefogcat.clickerx.databinding.ScriptEditFragBinding
-import top.littlefogcat.clickerx.utils.AlertDialogCompat
-import top.littlefogcat.clickerx.utils.getViewModelWithActivityLifecycle
-import top.littlefogcat.clickerx.utils.navigateBack
+import top.littlefogcat.clickerx.common.utils.AlertDialogCompat
+import top.littlefogcat.clickerx.common.utils.getViewModelWithActivityLifecycle
+import top.littlefogcat.clickerx.common.utils.navigateBack
 
 /**
  * 编辑单个脚本配置的界面。

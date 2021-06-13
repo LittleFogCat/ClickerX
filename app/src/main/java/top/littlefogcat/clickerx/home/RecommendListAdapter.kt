@@ -3,9 +3,9 @@ package top.littlefogcat.clickerx.home
 import android.util.Log
 import android.widget.Toast
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseDataBindingAdapter
+import top.littlefogcat.clickerx.common.base.BaseDataBindingAdapter
 import top.littlefogcat.clickerx.databinding.HomeRecyItemBinding
-import top.littlefogcat.clickerx.model.entities.RecommendItem
+import top.littlefogcat.clickerx.db.entities.RecommendItem
 
 /**
  * 推荐列表的Adapter

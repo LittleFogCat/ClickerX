@@ -1,9 +1,8 @@
 package top.littlefogcat.clickerx.model
 
-import top.littlefogcat.clickerx.App
-import top.littlefogcat.clickerx.core.Script
-import top.littlefogcat.clickerx.core.Script.Companion.STATE_DEFAULT
-import top.littlefogcat.clickerx.model.entities.UserSimple
+import top.littlefogcat.clickerx.db.entities.Script
+import top.littlefogcat.clickerx.db.entities.Script.Companion.STATE_DEFAULT
+import top.littlefogcat.clickerx.common.utils.AppContext
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.lang.Exception
@@ -28,7 +27,7 @@ object ScriptsRepository : ScrpitsDataSource {
 
     private fun readAsset(filename: String): String {
         try {
-            val app = App.get()
+            val app = AppContext.get()
             val assetManager = app.assets
             val stream = assetManager.open(filename)
             BufferedReader(InputStreamReader(stream)).useLines {
@@ -56,22 +55,13 @@ object ScriptsRepository : ScrpitsDataSource {
 
     // ======= 造假数据 ========
 
-    private fun createUser(): UserSimple {
-        val r = Random.Default.nextInt(10)
-        val name = when {
-            r > 8 -> "BigFogCat"
-            r > 5 -> "Niuu"
-            else -> "littlefogcat"
-        }
-        return UserSimple(0L, name, "")
-    }
 
 
     private fun createAntForest() = Script(
         0,
         "蚂蚁森林领能量",
         "蚂蚁森林领能量\n".repeat(10),
-        createUser(),
+        Random.Default.nextInt(10).toLong(),
         Script.STATE_PAUSED,
         "-- todo"
     )
@@ -86,7 +76,7 @@ object ScriptsRepository : ScrpitsDataSource {
             id,
             "微信发消息",
             "普通脚本示例：微信向指定用户发送消息。\n\n",
-            createUser(),
+            Random.Default.nextInt(10).toLong(),
             STATE_DEFAULT,
             loadWechatScript()
         )
@@ -97,7 +87,7 @@ object ScriptsRepository : ScrpitsDataSource {
             2L,
             "打开百度搜索",
             "打开百度并搜索ClickerX",
-            createUser(),
+            Random.Default.nextInt(10).toLong(),
             STATE_DEFAULT,
             readAsset("search_sample.lua")
         )
@@ -111,7 +101,7 @@ object ScriptsRepository : ScrpitsDataSource {
             id = id,
             title = "自动抢红包",
             desc = "触发脚本示例：自动抢红包",
-            creator = createUser(),
+            creatorId = Random.Default.nextInt(10).toLong(),
             state = Script.STATE_SCHEDULED,
             code = readAsset("hongbao_sample.lua"),
             trigger = true

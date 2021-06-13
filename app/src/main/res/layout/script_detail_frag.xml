@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="68dp"
-            android:text="@{viewModel.config.title}"
+            android:text="@{viewModel.script.title}"
             android:textColor="@color/base_black"
             android:textSize="35sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:src="@drawable/ic_default_head"
+            app:imageSrc="@{viewModel.creator.avatarUrl}"
             app:layout_constraintStart_toStartOf="@+id/tvTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
@@ -52,12 +53,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="@{viewModel.config.creator.username}"
+            android:text="@{viewModel.creator.username}"
             android:textColor="@color/gray_3"
             app:layout_constraintBottom_toBottomOf="@+id/ivCreator"
             app:layout_constraintStart_toEndOf="@+id/ivCreator"
             app:layout_constraintTop_toTopOf="@+id/ivCreator"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.5"
             tools:text="Littlefogcat" />
 
         <TextView
@@ -65,7 +66,7 @@
             android:layout_width="307dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{viewModel.config.desc}"
+            android:text="@{viewModel.script.desc}"
             android:textColor="@color/gray_3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -79,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginBottom="6dp"
-            android:text='@{viewModel.config.stateToString()}'
+            android:text="@{viewModel.script.stateToString()}"
             android:textColor="@color/gray_3"
             app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
             app:layout_constraintStart_toEndOf="@+id/tvTitle"
@@ -91,7 +92,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/button_to_run_this_script_once"
             android:onClick="@{onClickListener}"
-            app:srcByState="@{viewModel.config}"
+            app:srcByState="@{viewModel.script}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -11,14 +11,16 @@ import android.view.ViewParent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseViewPagerFragment
+import top.littlefogcat.clickerx.common.base.BaseViewPagerFragment
 import top.littlefogcat.clickerx.databinding.HomeFragBinding
-import top.littlefogcat.clickerx.utils.getViewModel
+import top.littlefogcat.clickerx.common.utils.getViewModel
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 
 /**
+ * Fragment for **HOME** page.
+ *
  * @Author：littlefogcat
  * @Date：2021/1/30-8:17
  * @Email：littlefogcat@foxmail.com

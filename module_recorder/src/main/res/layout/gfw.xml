@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<top.littlefogcat.clickerx.recorder.GlobalFloatingWindow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/gfw_bg" />
+
+    <View
+        android:id="@+id/dismiss"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/gfw_bg_pressed" />
+</top.littlefogcat.clickerx.recorder.GlobalFloatingWindow>

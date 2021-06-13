@@ -1,7 +1,8 @@
 package top.littlefogcat.clickerx.model
 
-import top.littlefogcat.clickerx.model.entities.User
-import top.littlefogcat.clickerx.model.entities.UserLocal
+import top.littlefogcat.clickerx.db.entities.UserSimple
+import top.littlefogcat.clickerx.db.entities.User
+import top.littlefogcat.clickerx.db.entities.UserLocal
 
 interface UserDataSource {
     /**
@@ -10,4 +11,6 @@ interface UserDataSource {
     fun getCurrentLoginUser(): UserLocal
 
     fun getUser(id: Long): User
+
+    fun getUserSimple(id: Long): UserSimple
 }

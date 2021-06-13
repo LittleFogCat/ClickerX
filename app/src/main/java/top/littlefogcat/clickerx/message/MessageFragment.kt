@@ -3,7 +3,7 @@ package top.littlefogcat.clickerx.message
 import android.os.Bundle
 import android.view.View
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseViewPagerFragment
+import top.littlefogcat.clickerx.common.base.BaseViewPagerFragment
 import top.littlefogcat.clickerx.databinding.MessageFragBinding
 
 class MessageFragment : BaseViewPagerFragment<MessageFragBinding>() {

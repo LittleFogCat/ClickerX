@@ -33,7 +33,7 @@
             android:lineSpacingExtra="4dp"
             android:padding="4dp"
             android:scrollbars="vertical"
-            android:text="@{viewModel.config.code}"
+            android:text="@{viewModel.script.code}"
             tools:text="-- 2faffe\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n" />
 
     </LinearLayout>

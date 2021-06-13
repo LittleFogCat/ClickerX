@@ -1,9 +1,9 @@
 package top.littlefogcat.clickerx.message
 
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseDataBindingAdapter
+import top.littlefogcat.clickerx.common.base.BaseDataBindingAdapter
+import top.littlefogcat.clickerx.common.utils.todo
 import top.littlefogcat.clickerx.databinding.MessageChatItemBinding
-import top.littlefogcat.clickerx.utils.todo
 
 /**
  * @Author：littlefogcat

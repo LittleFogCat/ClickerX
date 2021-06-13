@@ -2,6 +2,7 @@ package top.littlefogcat.clickerx.scriptdetail
 
 import android.app.Instrumentation
 import android.content.Context
+import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -9,13 +10,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseFragment
-import top.littlefogcat.clickerx.base.DefaultToolbarHolder
-import top.littlefogcat.clickerx.core.Script
+import top.littlefogcat.clickerx.common.base.BaseFragment
+import top.littlefogcat.clickerx.common.base.DefaultToolbarHolder
 import top.littlefogcat.clickerx.core.accessibility.ClickerXA11yService
 import top.littlefogcat.clickerx.databinding.ScriptDetailFragBinding
-import top.littlefogcat.clickerx.utils.getViewModelWithActivityLifecycle
-import top.littlefogcat.clickerx.utils.isAccessibilitySettingsOn
+import top.littlefogcat.clickerx.db.entities.Script
+import top.littlefogcat.clickerx.common.utils.getViewModelWithActivityLifecycle
+import top.littlefogcat.clickerx.common.utils.isAccessibilitySettingsOn
 
 /**
  * 配置详情页。
@@ -30,6 +31,10 @@ class ScriptDetailFragment : BaseFragment<ScriptDetailFragBinding>(), DefaultToo
     override fun onDataBinding(binding: ScriptDetailFragBinding) {
         binding.viewModel = getViewModelWithActivityLifecycle(ScriptDetailViewModel::class.java)
         binding.onClickListener = this
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
     /**
@@ -47,7 +52,7 @@ class ScriptDetailFragment : BaseFragment<ScriptDetailFragBinding>(), DefaultToo
                 return
             }
             // 提示运行一次
-            val scheduled = viewModel.config.value?.run {
+            val scheduled = viewModel.script.value?.run {
                 state == Script.STATE_SCHEDULED
             } ?: false
             dialog = AlertDialog.Builder(requireActivity())
@@ -85,5 +90,6 @@ class ScriptDetailFragment : BaseFragment<ScriptDetailFragBinding>(), DefaultToo
         // 当从编辑界面返回时，隐藏软键盘
         val ims = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         ims.hideSoftInputFromWindow(view?.windowToken, 0)
+        binding.viewModel?.fetchCreator()
     }
 }

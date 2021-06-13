@@ -13,40 +13,40 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
     <application
-        android:name=".App"
+        android:name="top.littlefogcat.clickerx.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name="top.littlefogcat.clickerx.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.MainActivity" />
-        <activity android:name=".scriptdetail.ScriptDetailActivity" />
-        <activity android:name=".addconfig.AddConfigActivity" />
+        <activity android:name="top.littlefogcat.clickerx.main.MainActivity" />
+        <activity android:name="top.littlefogcat.clickerx.scriptdetail.ScriptDetailActivity" />
+        <activity android:name="top.littlefogcat.clickerx.addconfig.AddConfigActivity" />
         <activity
-            android:name="top.littlefogcat.clickerx.core.accessibility.DummyActivity"
+            android:name="top.littlefogcat.clickerx.common.ui.DummyActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance" />
-        <!-- 辅助功能服务 -->
-        <service
-            android:name="top.littlefogcat.clickerx.core.accessibility.ClickerXA11yService"
-            android:label="@string/app_name"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
-            </intent-filter>
+<!--        &lt;!&ndash; 辅助功能服务 &ndash;&gt;-->
+<!--        <service-->
+<!--            android:name="top.littlefogcat.clickerx.core.accessibility.ClickerXA11yService"-->
+<!--            android:label="@string/app_name"-->
+<!--            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.accessibilityservice.AccessibilityService" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="android.accessibilityservice"
-                android:resource="@xml/accessibility" />
-        </service>
+<!--            <meta-data-->
+<!--                android:name="android.accessibilityservice"-->
+<!--                android:resource="@xml/accessibility" />-->
+<!--        </service>-->
         <!-- 通知监听服务 -->
         <service
             android:name="top.littlefogcat.clickerx.core.accessibility.NotificationObserverService"

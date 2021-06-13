@@ -1,9 +1,9 @@
 package top.littlefogcat.clickerx.model
 
-import top.littlefogcat.clickerx.model.entities.Chat
-import top.littlefogcat.clickerx.model.entities.Message
-import top.littlefogcat.clickerx.utils.DateUtil
-import kotlin.math.absoluteValue
+import top.littlefogcat.clickerx.Mocker
+import top.littlefogcat.clickerx.db.entities.Chat
+import top.littlefogcat.clickerx.db.entities.Message
+import top.littlefogcat.clickerx.common.utils.DateUtil
 import kotlin.random.Random
 
 class MessageRepository : MessageDataSource {
@@ -17,21 +17,21 @@ class MessageRepository : MessageDataSource {
 
         fun createChatList(): ArrayList<Chat> {
             return arrayListOf(
-                Chat(0, Chat.TYPE_PERSONAL, 0, "系统消息", "", createMessageList(0)),
-                Chat(1, Chat.TYPE_PERSONAL, 0, "通知", "", createMessageList(2)),
-                Chat(2, Chat.TYPE_PERSONAL, 0, "管理员", "", createMessageList(3)),
-                Chat(3, Chat.TYPE_PERSONAL, 0, "小花", "", createMessageList(4)),
-                Chat(4, Chat.TYPE_PERSONAL, 0, "小红", "", createMessageList(5)),
-                Chat(5, Chat.TYPE_PERSONAL, 0, "小刚", "", createMessageList(6)),
-                Chat(6, Chat.TYPE_PERSONAL, 0, "孝感", "", createMessageList(7)),
-                Chat(7, Chat.TYPE_PERSONAL, 0, "聊过", "", createMessageList(8)),
-                Chat(8, Chat.TYPE_PERSONAL, 0, "周至县", "", createMessageList(9)),
-                Chat(9, Chat.TYPE_PERSONAL, 0, "李玉梅", "", createMessageList(10)),
-                Chat(10, Chat.TYPE_PERSONAL, 0, "马尼", "", createMessageList(11)),
-                Chat(11, Chat.TYPE_PERSONAL, 0, "张鹏", "", createMessageList(12)),
-                Chat(12, Chat.TYPE_PERSONAL, 0, "苏联", "", createMessageList(13)),
-                Chat(13, Chat.TYPE_PERSONAL, 0, "美丽", "", createMessageList(14)),
-                Chat(14, Chat.TYPE_PERSONAL, 0, "嘤", "", createMessageList(15)),
+                Chat(0, Chat.TYPE_PERSONAL, 0, "系统消息", Mocker.avatar(), createMessageList(0)),
+                Chat(1, Chat.TYPE_PERSONAL, 0, "通知", Mocker.avatar(), createMessageList(2)),
+                Chat(2, Chat.TYPE_PERSONAL, 0, "管理员", Mocker.avatar(), createMessageList(3)),
+                Chat(3, Chat.TYPE_PERSONAL, 0, "小花", Mocker.avatar(), createMessageList(4)),
+                Chat(4, Chat.TYPE_PERSONAL, 0, "小红", Mocker.avatar(), createMessageList(5)),
+                Chat(5, Chat.TYPE_PERSONAL, 0, "小刚", Mocker.avatar(), createMessageList(6)),
+                Chat(6, Chat.TYPE_PERSONAL, 0, "孝感", Mocker.avatar(), createMessageList(7)),
+                Chat(7, Chat.TYPE_PERSONAL, 0, "聊过", Mocker.avatar(), createMessageList(8)),
+                Chat(8, Chat.TYPE_PERSONAL, 0, "周至县", Mocker.avatar(), createMessageList(9)),
+                Chat(9, Chat.TYPE_PERSONAL, 0, "李玉梅", Mocker.avatar(), createMessageList(10)),
+                Chat(10, Chat.TYPE_PERSONAL, 0, "马尼", Mocker.avatar(), createMessageList(11)),
+                Chat(11, Chat.TYPE_PERSONAL, 0, "张鹏", Mocker.avatar(), createMessageList(12)),
+                Chat(12, Chat.TYPE_PERSONAL, 0, "苏联", Mocker.avatar(), createMessageList(13)),
+                Chat(13, Chat.TYPE_PERSONAL, 0, "美丽", Mocker.avatar(), createMessageList(14)),
+                Chat(14, Chat.TYPE_PERSONAL, 0, "嘤", Mocker.avatar(), createMessageList(15)),
             )
         }
 

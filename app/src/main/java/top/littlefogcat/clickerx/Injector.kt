@@ -1,8 +1,8 @@
 package top.littlefogcat.clickerx
 
 import top.littlefogcat.clickerx.model.*
-import top.littlefogcat.clickerx.utils.ImageLoader
-import top.littlefogcat.clickerx.utils.ImageLoaderImpl
+import top.littlefogcat.clickerx.common.utils.ImageLoader
+import top.littlefogcat.clickerx.common.utils.ImageLoaderImpl
 
 /**
  * 根据不同的变体提供不同的对象。
@@ -33,9 +33,4 @@ object Injector {
      * 用户信息的数据源。
      */
     fun provideUserDataSource(): UserDataSource = UserRepository()
-
-    /**
-     * 提供[ImageLoader]的实现类
-     */
-    fun provideImageLoader(): ImageLoader = ImageLoaderImpl
 }

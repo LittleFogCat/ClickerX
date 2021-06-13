@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="top.littlefogcat.clickerx.core.Script" />
+            type="top.littlefogcat.clickerx.db.entities.Script" />
 
         <variable
             name="itemClick"
@@ -36,7 +36,7 @@
                 android:id="@+id/status"
                 android:layout_width="18dp"
                 android:layout_height="match_parent"
-                app:colorByState="@{item.state}"
+                colorByState="@{item.state}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:background="@color/configStatusRunning" />

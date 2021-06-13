@@ -1,22 +1,19 @@
 package top.littlefogcat.clickerx.me
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import androidx.databinding.DataBindingUtil
-import com.alibaba.android.arouter.launcher.ARouter
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseDataBindingListAdapter
+import top.littlefogcat.clickerx.common.base.BaseDataBindingListAdapter
 import top.littlefogcat.clickerx.databinding.MeListItemHeaderBinding
 import top.littlefogcat.clickerx.databinding.MeListItemPlainBinding
-import top.littlefogcat.clickerx.utils.ARouterCompat
-import top.littlefogcat.clickerx.utils.ROUTE_ACTIVITY_DUMMY
+import top.littlefogcat.clickerx.common.utils.ARouterHelper
+import top.littlefogcat.clickerx.common.utils.ROUTE_ACTIVITY_DUMMY
 
 /**
- * MeFragment界面对应的Adapter
+ * Adapter for ListView in [MeFragment].
  *
  * @Author：littlefogcat
  * @Date：2021/2/26-21:31
@@ -49,7 +46,7 @@ class MeAdapter(context: Context) : BaseDataBindingListAdapter<MeListItem>() {
                 }
                 if (item.target != null)
                     view.setOnClickListener {
-                        ARouterCompat.navigateTo(ROUTE_ACTIVITY_DUMMY) // TODO: Navigate to specified Activity
+                        ARouterHelper.navigateTo(ROUTE_ACTIVITY_DUMMY) // TODO: Navigate to specified Activity
                     }
                 binding.item = item as MeListItemPlain
                 binding.executePendingBindings()
@@ -65,7 +62,7 @@ class MeAdapter(context: Context) : BaseDataBindingListAdapter<MeListItem>() {
                 }
                 if (item.target != null)
                     view.setOnClickListener {
-                        ARouterCompat.navigateTo(ROUTE_ACTIVITY_DUMMY) // TODO: Navigate to specified Activity
+                        ARouterHelper.navigateTo(ROUTE_ACTIVITY_DUMMY) // TODO: Navigate to specified Activity
                     }
                 binding.item = item as MeListItemHeader
                 binding.executePendingBindings()

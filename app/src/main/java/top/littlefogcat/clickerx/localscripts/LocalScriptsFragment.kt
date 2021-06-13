@@ -3,12 +3,12 @@ package top.littlefogcat.clickerx.localscripts
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseViewPagerFragment
-import top.littlefogcat.clickerx.core.Script
+import top.littlefogcat.clickerx.common.base.BaseViewPagerFragment
+import top.littlefogcat.clickerx.db.entities.Script
 import top.littlefogcat.clickerx.databinding.LocalScriptsFragBinding
-import top.littlefogcat.clickerx.utils.INTENT_KEY_CONFIG
-import top.littlefogcat.clickerx.utils.ROUTE_ACTIVITY_CONFIG_DETAIL
-import top.littlefogcat.clickerx.utils.getViewModel
+import top.littlefogcat.clickerx.common.utils.INTENT_KEY_CONFIG
+import top.littlefogcat.clickerx.common.utils.ROUTE_ACTIVITY_CONFIG_DETAIL
+import top.littlefogcat.clickerx.common.utils.getViewModel
 
 /**
  * @Author：littlefogcat

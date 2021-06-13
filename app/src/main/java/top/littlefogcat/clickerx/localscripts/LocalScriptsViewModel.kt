@@ -3,8 +3,8 @@ package top.littlefogcat.clickerx.localscripts
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import top.littlefogcat.clickerx.Injector
-import top.littlefogcat.clickerx.base.BaseViewModel
-import top.littlefogcat.clickerx.core.Script
+import top.littlefogcat.clickerx.common.base.BaseViewModel
+import top.littlefogcat.clickerx.db.entities.Script
 
 /**
  * @Author：littlefogcat

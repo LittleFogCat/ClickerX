@@ -1,7 +1,7 @@
 package top.littlefogcat.clickerx.model
 
 import top.littlefogcat.clickerx.Injector
-import top.littlefogcat.clickerx.core.Script
+import top.littlefogcat.clickerx.db.entities.Script
 
 /**
  * 配置文件的数据源，提供了加载配置文件的功能。

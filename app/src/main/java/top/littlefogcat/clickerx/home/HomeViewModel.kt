@@ -2,9 +2,9 @@ package top.littlefogcat.clickerx.home
 
 import androidx.lifecycle.MutableLiveData
 import top.littlefogcat.clickerx.Injector
-import top.littlefogcat.clickerx.base.BaseViewModel
-import top.littlefogcat.clickerx.model.entities.RecommendItem
-import top.littlefogcat.clickerx.model.entities.RecommendSearchItem
+import top.littlefogcat.clickerx.common.base.BaseViewModel
+import top.littlefogcat.clickerx.db.entities.RecommendItem
+import top.littlefogcat.clickerx.db.entities.RecommendSearchItem
 import kotlin.random.Random
 
 /**
@@ -20,24 +20,18 @@ class HomeViewModel : BaseViewModel() {
     val searchList = MutableLiveData<List<RecommendSearchItem>>()
 
     fun loadRecommendList() {
-        runOnIO(recommendList) {
-            recommendRepository.getRecommendList()
+        runOnIO {
+            val result = recommendRepository.getRecommendList()
+            recommendList.postValue(result)
         }
-//        runOnIOThread {
-//            val _recommendList = recommendRepository.getRecommendList()
-//            withContext(Dispatchers.Main) {
-//                Log.d(TAG, "loadRecommendList: $_recommendList")
-//                recommendList.value = _recommendList
-//            }
-//        }
     }
 
     fun loadRecommendSearch() {
         runOnIO {
-            val _searchList = recommendRepository.getRecommendSearchList()
-            val idx = Random.Default.nextInt(_searchList.size)
-            searchList.postValue(_searchList)
-            searchHint.postValue(_searchList[idx])
+            val result = recommendRepository.getRecommendSearchList()
+            val idx = Random.Default.nextInt(result.size)
+            searchList.postValue(result)
+            searchHint.postValue(result[idx])
         }
     }
 

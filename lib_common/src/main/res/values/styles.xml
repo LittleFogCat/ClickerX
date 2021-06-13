@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimStyle</item>
+    </style>
+
+    <style name="WindowAnimStyle">
+        <item name="android:activityOpenEnterAnimation">@anim/rtl_enter_anim</item>
+        <item name="android:activityOpenExitAnimation">@anim/rtl_exit_anim</item>
+        <item name="android:activityCloseEnterAnimation">@anim/rtl_back_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/rtl_back_exit</item>
+    </style>
+
+</resources>

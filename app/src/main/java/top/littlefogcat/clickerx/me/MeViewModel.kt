@@ -2,11 +2,9 @@ package top.littlefogcat.clickerx.me
 
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 import top.littlefogcat.clickerx.Injector
-import top.littlefogcat.clickerx.base.BaseViewModel
-import top.littlefogcat.clickerx.core.accessibility.DummyActivity
-import top.littlefogcat.clickerx.utils.ROUTE_ACTIVITY_DUMMY
+import top.littlefogcat.clickerx.common.base.BaseViewModel
+import top.littlefogcat.clickerx.common.utils.ROUTE_ACTIVITY_DUMMY
 
 /**
  * @Author：littlefogcat

@@ -9,9 +9,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import top.littlefogcat.clickerx.core.accessibility.ClickerXA11yService
 import top.littlefogcat.clickerx.main.MainActivity
-import top.littlefogcat.clickerx.utils.ScreenUtil
-import top.littlefogcat.clickerx.utils.isAccessibilitySettingsOn
-import top.littlefogcat.clickerx.utils.launchActivity
+import top.littlefogcat.clickerx.common.utils.ScreenUtil
+import top.littlefogcat.clickerx.common.utils.isAccessibilitySettingsOn
+import top.littlefogcat.clickerx.common.utils.launchActivity
 
 class SplashActivity : AppCompatActivity() {
     companion object {

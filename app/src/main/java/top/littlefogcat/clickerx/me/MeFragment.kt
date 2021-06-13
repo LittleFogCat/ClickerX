@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseFragment
+import top.littlefogcat.clickerx.common.base.BaseFragment
 import top.littlefogcat.clickerx.databinding.MeFragBinding
-import top.littlefogcat.clickerx.utils.getViewModel
+import top.littlefogcat.clickerx.common.utils.getViewModel
 
 /**
+ * Fragment for **ME** page.
+ *
  * @Author：littlefogcat
  * @Date：2021/2/26-13:21
  * @Email：littlefogcat@foxmail.com

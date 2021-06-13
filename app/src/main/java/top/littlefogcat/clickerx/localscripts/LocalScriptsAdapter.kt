@@ -1,9 +1,9 @@
 package top.littlefogcat.clickerx.localscripts
 
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseDataBindingAdapter
+import top.littlefogcat.clickerx.common.base.BaseDataBindingAdapter
 import top.littlefogcat.clickerx.databinding.LocalScriptsItemBinding
-import top.littlefogcat.clickerx.core.Script
+import top.littlefogcat.clickerx.db.entities.Script
 
 /**
  * @Author：littlefogcat

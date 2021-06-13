@@ -1,7 +1,6 @@
 package top.littlefogcat.clickerx.main
 
 import android.animation.ValueAnimator
-import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.view.ViewGroup
@@ -11,16 +10,14 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import top.littlefogcat.clickerx.R
-import top.littlefogcat.clickerx.base.BaseActivity
-import top.littlefogcat.clickerx.base.DataBindingActivity
+import top.littlefogcat.clickerx.common.base.DataBindingActivity
 import top.littlefogcat.clickerx.core.Core
 import top.littlefogcat.clickerx.databinding.MainActBinding
 import top.littlefogcat.clickerx.home.HomeFragment
 import top.littlefogcat.clickerx.localscripts.LocalScriptsFragment
 import top.littlefogcat.clickerx.me.MeFragment
 import top.littlefogcat.clickerx.message.MessageFragment
-import top.littlefogcat.clickerx.utils.loadDrawable
-import java.io.File
+import top.littlefogcat.clickerx.common.utils.loadDrawable
 import kotlin.math.abs
 
 class MainActivity : DataBindingActivity<MainActBinding>() {

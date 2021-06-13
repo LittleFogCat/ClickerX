@@ -7,7 +7,7 @@
             name="item"
             type="top.littlefogcat.clickerx.message.MessageChatItem" />
 
-        <import type="top.littlefogcat.clickerx.utils.DateUtil" />
+        <import type="top.littlefogcat.clickerx.common.utils.DateUtil" />
     </data>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
