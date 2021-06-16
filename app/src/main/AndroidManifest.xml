@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
     <application
-        android:name="top.littlefogcat.clickerx.App"
+        android:name="top.littlefogcat.clickerx.base.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,11 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="top.littlefogcat.clickerx.main.MainActivity" />
-        <activity android:name="top.littlefogcat.clickerx.scriptdetail.ScriptDetailActivity" />
-        <activity android:name="top.littlefogcat.clickerx.addconfig.AddConfigActivity" />
+        <activity android:name="top.littlefogcat.clickerx.home.MainActivity" />
         <activity
-            android:name="top.littlefogcat.clickerx.common.ui.DummyActivity"
+            android:name="top.littlefogcat.clickerx.base.ui.DummyActivity"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance" />
 <!--        &lt;!&ndash; 辅助功能服务 &ndash;&gt;-->
@@ -48,25 +46,25 @@
 <!--                android:resource="@xml/accessibility" />-->
 <!--        </service>-->
         <!-- 通知监听服务 -->
-        <service
-            android:name="top.littlefogcat.clickerx.core.accessibility.NotificationObserverService"
-            android:label="@string/app_name"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
-            <intent-filter>
-                <action android:name="android.service.notification.NotificationListenerService" />
-            </intent-filter>
-        </service>
-        <!-- 事件监听服务 -->
-        <service
-            android:name="top.littlefogcat.clickerx.core.accessibility.EventHandleService"
-            android:permission="android.permission.BIND_INPUT_METHOD">
-            <intent-filter>
-                <action android:name="android.view.InputMethod" />
-            </intent-filter>
-            <meta-data
-                android:name="android.view.im"
-                android:resource="@xml/ims" />
-        </service>
+<!--        <service-->
+<!--            android:name="top.littlefogcat.clickerx.core.accessibility.NotificationObserverService"-->
+<!--            android:label="@string/app_name"-->
+<!--            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.service.notification.NotificationListenerService" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
+<!--        &lt;!&ndash; 事件监听服务 &ndash;&gt;-->
+<!--        <service-->
+<!--            android:name="top.littlefogcat.clickerx.core.accessibility.EventHandleService"-->
+<!--            android:permission="android.permission.BIND_INPUT_METHOD">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.view.InputMethod" />-->
+<!--            </intent-filter>-->
+<!--            <meta-data-->
+<!--                android:name="android.view.im"-->
+<!--                android:resource="@xml/ims" />-->
+<!--        </service>-->
     </application>
 
 </manifest>

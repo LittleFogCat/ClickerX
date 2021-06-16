@@ -9,7 +9,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
+        //noinspection AndroidGradlePluginVersion
+        classpath 'com.android.tools.build:gradle:4.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -53,10 +54,10 @@ allprojects {
         arouter = "1.5.0"
         arouter_compiler = "1.2.2"
         eventbus_version = "3.1.1"
-        gson_version = "2.8.6"
-//        luaj_version = "3.0.1"
-        okhttp_version = "3.14.9"
         glide_version = "4.12.0"
+        gson_version = "2.8.6"
+        okhttp_version = "3.14.9"
+        retrofit_version = "2.9.0"
 
         // 测试
         androidx_junit_version = "1.1.2"
@@ -76,7 +77,7 @@ allprojects {
                 constraintlayout: "androidx.constraintlayout:constraintlayout:$constraintlayout_version",
                 core_ktx        : "androidx.core:core-ktx:$ktx_core_version",
                 coroutines      : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
-                design          : "com.android.support:design:$design_version", // Design库
+                design          : "com.android.support:design:$design_version", // Design库 DO NOT USE! Replace with `material`.
                 kotlin          : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
                 material        : "com.google.android.material:material:$material_version",
                 navigation_frag : "androidx.navigation:navigation-fragment-ktx:$navigation", // navigation
@@ -90,18 +91,26 @@ allprojects {
                 // 第三方
                 arouter         : "com.alibaba:arouter-api:$arouter",
                 arouter_compiler: "com.alibaba:arouter-compiler:$arouter_compiler",
+                converter_gson  : "com.squareup.retrofit2:converter-gson:$retrofit_version",
                 eventbus        : "org.greenrobot:eventbus:$eventbus_version",
                 glide           : "com.github.bumptech.glide:glide:$glide_version",
                 gson            : "com.google.code.gson:gson:$gson_version",
                 okhttp          : "com.squareup.okhttp3:okhttp:$okhttp_version",
+                retrofit        : "com.squareup.retrofit2:retrofit:$retrofit_version",
 
                 // 测试
                 junit           : "junit:junit:$junit_version",
                 room_test       : "androidx.room:room-testing:$room_version", // test helper for room
                 junitx          : "androidx.test.ext:junit:$androidx_junit_version",
                 espressox       : "androidx.test.espresso:espresso-core:$androidx_espresso_version",
+
         ]
+        /**
+         * 是否单独运行
+         */
+        isSeparate = false
     }
+
 }
 
 task clean(type: Delete) {

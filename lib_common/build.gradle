@@ -44,6 +44,7 @@ kapt {
 dependencies {
     compileOnly files('libs/luaj-jse-3.0.1.jar')
 
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation dep.appcompat
     compileOnly dep.core_ktx
     compileOnly dep.navigation_frag
@@ -51,7 +52,6 @@ dependencies {
     compileOnly dep.room_runtime
     compileOnly dep.room_ktx
     kapt dep.room_compiler
-//    compileOnly dep.design
     compileOnly dep.material
     compileOnly dep.kotlin
     compileOnly dep.coroutines

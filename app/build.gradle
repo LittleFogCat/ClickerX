@@ -54,9 +54,13 @@ kapt {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    implementation project(":module_home")
+    implementation project(":module_scriptdetail")
     implementation project(":lib_common")
-    implementation project(":component_db")
-    implementation project(":module_clickercore")
+    implementation project(':component_base')
+    implementation project(':component_clickercore')
+    implementation project(':component_script')
+    implementation project(':component_user')
 
     // Android官方库
     implementation dep.appcompat
@@ -67,7 +71,6 @@ dependencies {
     implementation dep.room_ktx
     kapt dep.room_compiler
     implementation dep.work_runtime
-//    implementation dep.design // 使用material
     implementation dep.material
     implementation dep.kotlin
     implementation dep.coroutines

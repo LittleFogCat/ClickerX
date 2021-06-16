@@ -1,0 +1,73 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
+
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName version_name
+
+        testInstrumentationRunner test_instrumentation_runner
+        consumerProguardFiles consumer_proguard
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(default_proguard_file), proguad_file
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    flavorDimensions 'source'
+    productFlavors {
+        mock {
+            dimension 'source'
+        }
+        prod {
+            dimension 'source'
+        }
+    }
+}
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName()) // ARouter 配置
+    }
+}
+dependencies {
+    implementation files('libs/luaj-jse-3.0.1.jar') // 这个地方的luaj.jar包源码是经过修改的，不可以直接maven导入，否则Android平台会出错
+    compileOnly project(":lib_common")
+    compileOnly project(':component_base')
+    compileOnly project(':component_script')
+
+    implementation dep.eventbus
+    implementation dep.arouter
+    kapt dep.arouter_compiler
+
+//    compileOnly "androidx.room:room-runtime:$room_version" // room runtime
+//    compileOnly "androidx.room:room-ktx:$room_version"
+//    kapt "androidx.room:room-compiler:$room_version"
+//
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly "androidx.core:core-ktx:$ktx_core_version"
+    compileOnly "androidx.appcompat:appcompat:$appcompat_version"
+    compileOnly "com.google.android.material:material:$material_version"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version" // 协程
+
+    testCompileOnly "junit:junit:$junit_version"
+    androidTestCompileOnly "androidx.test.ext:junit:$androidx_junit_version"
+    androidTestCompileOnly "androidx.test.espresso:espresso-core:$androidx_espresso_version"
+}

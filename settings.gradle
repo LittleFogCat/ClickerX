@@ -1,8 +1,14 @@
 rootProject.name = "ClickerX"
-include ':lib_compiler'
-//include ':module_recorder' // 暂时不做
-include ':lib_common'
 include ':app'
+include ':module_home'
+include ':component_clickercore'
+include ':component_base'
+include ':lib_common'
+include ':lib_compiler'
 include ':lib_shell'
-include ':module_clickercore'
-include ':component_db'
+//include ':module_recorder' // 暂时不做
+include ':component_script'
+include ':component_user'
+include ':lib_network'
+include ':module_scriptdetail'
+include ':lib_clinj'

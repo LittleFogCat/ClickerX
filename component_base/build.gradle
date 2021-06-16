@@ -1,0 +1,67 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile(default_proguard_file), proguad_file
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName()) // ARouter 配置
+    }
+}
+dependencies {
+    // use api to contain all the libs
+    api project(":lib_clinj")
+    api project(":lib_common")
+    api project(":lib_compiler")
+    api project(":lib_network")
+    api project(":lib_shell")
+
+    implementation dep.appcompat
+    compileOnly dep.core_ktx
+    compileOnly dep.kotlin
+    compileOnly dep.material
+    compileOnly dep.room_runtime
+    compileOnly dep.room_ktx
+    kapt dep.room_compiler
+    compileOnly dep.navigation_frag
+
+    implementation dep.arouter
+    kapt dep.arouter_compiler
+    implementation dep.eventbus
+
+//    compileOnly 'androidx.core:core-ktx:1.5.0'
+//    testCompileOnly 'junit:junit:4.+'
+//    androidTestCompileOnly 'androidx.test.ext:junit:1.1.2'
+//    androidTestCompileOnly 'androidx.test.espresso:espresso-core:3.3.0'
+}
